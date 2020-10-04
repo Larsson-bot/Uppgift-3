@@ -27,12 +27,10 @@ namespace AzureFunctions
             string targetdeviceId = req.Query["targetdeviceid"];
             string message = req.Query["message"];
 
-
-
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             var data = JsonConvert.DeserializeObject<BodyMessageModel>(requestBody);
+            
             targetdeviceId = targetdeviceId ?? data?.TargetDeviceId;
-
             message = message ?? data?.Message;
 
            await DeviceService.SendMessageToDeviceAsync(serviceClient, targetdeviceId, message);

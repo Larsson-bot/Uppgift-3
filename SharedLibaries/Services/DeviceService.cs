@@ -51,7 +51,6 @@ namespace SharedLibaries.Services
         {
             var payload = new MAD.Message(Encoding.UTF8.GetBytes(message));
             await serviceClient.SendAsync(targetDeviceId, payload);
-
         }
     }
 }
